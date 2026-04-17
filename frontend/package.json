@@ -1,6 +1,7 @@
 {
     "name": "progit-frontend",
     "version": "1.0.0",
+    "homepage": "https://progit-app.github.io/ProGit-app",
     "private": true,
     "dependencies": {
         "react": "^18.2.0",
@@ -9,6 +10,8 @@
         "axios": "^1.6.2"
     },
     "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build,
         "start": "react-scripts start",
         "build": "react-scripts build"
     },
