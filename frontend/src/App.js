@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import DashboardNew from './components/DashboardNew';
 import Signup from './components/Signup';
-
-const API_URL = 'http://localhost:5000/api';
 
 function Login({ onLogin, onSwitchToSignup }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         
         const demoUsers = JSON.parse(localStorage.getItem('demoUsers') || '[]');
@@ -100,7 +97,6 @@ function Login({ onLogin, onSwitchToSignup }) {
                                 outline: 'none',
                                 backgroundColor: 'rgba(255,255,255,0.12)',
                                 color: 'white',
-                                transition: 'all 0.3s'
                             }}
                             required
                         />
@@ -122,7 +118,6 @@ function Login({ onLogin, onSwitchToSignup }) {
                                 outline: 'none',
                                 backgroundColor: 'rgba(255,255,255,0.12)',
                                 color: 'white',
-                                transition: 'all 0.3s'
                             }}
                             required
                         />
@@ -142,10 +137,7 @@ function Login({ onLogin, onSwitchToSignup }) {
                             cursor: 'pointer',
                             marginTop: '15px',
                             textTransform: 'uppercase',
-                            transition: 'all 0.3s'
                         }}
-                        onMouseEnter={(e) => e.target.style.transform = 'translateY(-2px)'}
-                        onMouseLeave={(e) => e.target.style.transform = 'translateY(0)'}
                     >
                         Sign in
                     </button>
