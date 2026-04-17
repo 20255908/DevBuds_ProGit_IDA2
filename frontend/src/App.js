@@ -1,10 +1,10 @@
 ﻿import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DashboardNew from './components/DashboardNew';
+import Signup from './components/Signup';
 
 const API_URL = 'http://localhost:5000/api';
 
-// Login Component with Beautiful Blue Circle Design
 function Login({ onLogin }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
