@@ -5,7 +5,7 @@
 }
 
 body {
-  background: #F4F7FC;
+  background: #F3F6FC;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
   padding: 2rem;
 }
@@ -16,17 +16,17 @@ body {
   align-items: center;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #EDF2F7;
+  border-bottom: 1px solid #E9EEF5;
 }
 
 .greeting h1 {
   font-size: 1.85rem;
   font-weight: 700;
-  color: #1F3B4C;
+  color: #1A2C3E;
 }
 
 .greeting p {
-  color: #5B6E8C;
+  color: #5E6F8D;
   margin-top: 6px;
 }
 
@@ -34,16 +34,17 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: #F8FAFE;
+  background: #FFFFFF;
   padding: 8px 18px;
   border-radius: 60px;
-  border: 1px solid #E4ECF3;
+  border: 1px solid #E2EAF2;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
 }
 
 .avatar {
   width: 42px;
   height: 42px;
-  background: linear-gradient(145deg, #2B6A9F, #1E4A6E);
+  background: #1E3A5F;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -55,12 +56,12 @@ body {
 .user-info span {
   font-weight: 600;
   font-size: 0.9rem;
-  color: #1f3b4c;
+  color: #1A2C3E;
 }
 
 .user-info small {
   font-size: 0.7rem;
-  color: #7D8FAB;
+  color: #7C8BA5;
 }
 
 .section-title {
@@ -73,13 +74,14 @@ body {
 .section-title h2 {
   font-size: 1.6rem;
   font-weight: 700;
-  color: #1E3A4D;
+  color: #1A2C3E;
 }
 
 .section-title a {
-  color: #2B6A9F;
+  color: #2C6E9E;
   text-decoration: none;
   font-size: 0.85rem;
+  font-weight: 500;
 }
 
 .projects-grid {
@@ -90,20 +92,22 @@ body {
 
 .project-card {
   background: #FFFFFF;
-  border-radius: 24px;
+  border-radius: 20px;
   padding: 1.4rem;
-  border: 1px solid #EAF0F6;
+  border: 1px solid #E2EAF2;
   transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 28px -12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.12);
+  border-color: #CDDDEB;
 }
 
 .project-title {
   display: flex;
-  justify-content: space-between'
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 0.75rem;
 }
@@ -111,20 +115,21 @@ body {
 .project-title h3 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #1C3E54;
+  color: #1A2C3E;
 }
 
 .status-badge {
-  background: #e9F4EA;
-  color: #2E7D64;
+  background: #E3F2EF;
+  color: #1C6F5C;
   font-size: 0.7rem;
   font-weight: 700;
   padding: 4px 12px;
   border-radius: 50px;
+  letter-spacing: 0.3px;
 }
 
 .project-description {
-  color: #5F7A9A;
+  color: #5A6F91;
   font-size: 0.9rem;
   line-height: 1.45;
   margin: 0.6rem 0 1.2rem 0;
@@ -135,21 +140,30 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid #F0F4FA;
+  border-top: 1px solid #ECF2F8;
   padding-top: 1rem;
 }
 
 .active-tag {
-  color: #1F6392;
+  color: #2C6E9E;
   font-size: 0.75rem;
   font-weight: 600;
+  background: #F0F6FD;
+  padding: 4px 10px;
+  border-radius: 30px;
 }
 
 .view-link {
-  color: #2B6A9F;
+  color: #2C6E9E;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.85rem;
+  transition: color 0.15s;
+}
+
+.view-link:hover {
+  color: #1A4D73;
+  text-decoration: underline;
 }
 
 @media (max-width: 750px) {
