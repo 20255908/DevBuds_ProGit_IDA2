@@ -110,6 +110,16 @@ body {
   text-decoration: underline;
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.2rem;
+  color: #5B6E8C;
+  background: #F4F7FC;
+}
+
 .dashboard-container {
   max-width: 1280px;
   margin: 0 auto;
