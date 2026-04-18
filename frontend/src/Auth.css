@@ -5,6 +5,8 @@
   justify-content: center;
   background: linear-gradient(135deg, #1E3A4D 0%, #2B6A9F 100%);
   padding: 2rem;
+  position: relative;
+  overflow: auto;
 }
 
 .auth-card {
@@ -14,6 +16,8 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   width: 100%;
   max-width: 450px;
+  position: relative;
+  z-index: 10;
 }
 
 .auth-card h1 {
@@ -101,4 +105,38 @@
 
 .auth-card a:hover {
   text-decoration: underline;
+}
+
+.auth-float-circle {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(74,144,226,0.15), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.circle-1 {
+  top: -100px;
+  left: -100px;
+  animation: float1 20s ease-in-out infinite;
+}
+
+.circle-2 {
+  bottom: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  animation: float2 15s ease-in-out infinite;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.1); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-20px, 30px) scale(1.1); }
 }
