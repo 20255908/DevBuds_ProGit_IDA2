@@ -108,20 +108,23 @@ function Signup({ onSwitchToLogin }) {
 }
 
 function Dashboard({ user, onLogout }) {
+    const [projects] = useState([
+        { id: 1, name: 'Website Redesign', description: 'Redesign the landing page UI and UX flows for Q3 launch.', status: 'Active' },
+        { id: 2, name: 'API Integration', description: 'Connect payment gateway and third-party API services.', status: 'Active' },
+        { id: 3, name: 'Mobile App', description: 'React Native app — sprint 2 in progress.', status: 'Active' },
+        { id: 4, name: 'Data Pipeline', description: 'ETL pipeline for analytics dashboard ingestion.', status: 'Active' }
+    ]);
+
     const getUserInitials = () => {
         if (user?.fullName) {
-            const nameParts = user.fullName.split(' ');
-            if (nameParts.length >= 2) {
-                return (nameParts[0].charAt(0) + nameParts[1].charAt(0)).toUpperCase();
+            const parts = user.fullName.split(' ');
+            if (parts.length >= 2) {
+                return (parts[0].charAt(0) + parts[1].charAt(0)).toUpperCase();
             }
             return user.fullName.substring(0, 2).toUpperCase();
         }
-        if (user?.name) {
-            return user.name.substring(0, 2).toUpperCase();
-        }
-        if (user?.email) {
-            return user.email.substring(0, 2).toUpperCase();
-        }
+        if (user?.name) return user.name.substring(0, 2).toUpperCase();
+        if (user?.email) return user.email.substring(0, 2).toUpperCase();
         return 'JD';
     };
 
@@ -139,49 +142,38 @@ function Dashboard({ user, onLogout }) {
         return 'User';
     };
 
-    const initials = getUserInitials();
-    const displayName = getDisplayName();
-    const firstName = getFirstName();
-
-    const projects = [
-        { id: 1, name: 'Website Redesign', description: 'Redesign the landing page UI and UX flows for Q3 launch.' },
-        { id: 2, name: 'API Integration', description: 'Connect payment gateway and third-party API services.' },
-        { id: 3, name: 'Mobile App', description: 'React Native app — sprint 2 in progress.' },
-        { id: 4, name: 'Data Pipeline', description: 'ETL pipeline for analytics dashboard ingestion.' }
-    ];
-
     return (
         <div className="dashboard-container">
             <div className="dashboard">
                 <div className="dashboard-header">
                     <div className="greeting">
                         <h1>Dashboard</h1>
-                        <p>Welcome back, {firstName}. Here's what's happening with your projects.</p>
+                        <p>Welcome back, {getFirstName()}. Here's what's happening with your projects.</p>
                     </div>
                     <div className="user-profile">
-                        <div className="avatar">{initials}</div>
+                        <div className="avatar">{getUserInitials()}</div>
                         <div className="user-info">
-                            <span>{displayName}</span>
+                            <span>{getDisplayName()}</span>
                             <small>Product Studio</small>
                         </div>
                         <button className="logout-btn" onClick={onLogout}>Logout</button>
                     </div>
                 </div>
+
                 <div className="section-title">
                     <h2>My Projects</h2>
                 </div>
+
                 <div className="projects-grid">
                     {projects.map(project => (
                         <div key={project.id} className="project-card">
                             <div className="project-title">
                                 <h3>{project.name}</h3>
-                                <span className="status-badge">Active</span>
+                                <span className="status-badge">{project.status}</span>
                             </div>
-                            <div className="project-description">
-                                {project.description}
-                            </div>
+                            <p className="project-description">{project.description}</p>
                             <div className="card-footer">
-                                <span className="active-tag">● Active</span>
+                                <span className="active-tag">● {project.status}</span>
                                 <a href="#" className="view-link">View →</a>
                             </div>
                         </div>
@@ -215,7 +207,7 @@ function App() {
     };
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div className="loading">Loading...</div>;
     }
 
     if (!user) {
