@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DashboardNew from './components/DashboardNew';
-import './auth.css';
+import './App.css';
 
 function Login({ onLogin, onSwitchToSignup }) {
     const [email, setEmail] = useState('');
@@ -28,32 +27,16 @@ function Login({ onLogin, onSwitchToSignup }) {
 
     return (
         <div className="auth-container">
-            <div className="auth-float-circle circle-1"></div>
-            <div className="auth-float-circle circle-2"></div>
             <div className="auth-card">
                 <h1>ProGit</h1>
                 <h2>Sign In</h2>
                 {error && <div className="error">{error}</div>}
                 <form onSubmit={handleSubmit}>
-                    <input
-                        type="email"
-                        placeholder="Email address"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
+                    <input type="email" placeholder="Email address" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                     <button type="submit">Sign In</button>
                 </form>
-                <p>
-                    Don't have an account? <a href="#" onClick={(e) => { e.preventDefault(); onSwitchToSignup(); }}>Create Account</a>
-                </p>
+                <p>Don't have an account? <a href="#" onClick={(e) => { e.preventDefault(); onSwitchToSignup(); }}>Create Account</a></p>
             </div>
         </div>
     );
@@ -106,47 +89,33 @@ function Signup({ onSwitchToLogin }) {
 
     return (
         <div className="auth-container">
-            <div className="auth-float-circle circle-1"></div>
-            <div className="auth-float-circle circle-2"></div>
             <div className="auth-card">
                 <h1>ProGit</h1>
                 <h2>Create Account</h2>
                 {error && <div className="error">{error}</div>}
                 {success && <div className="success">{success}</div>}
                 <form onSubmit={handleSubmit}>
-                    <input
-                        type="text"
-                        placeholder="Full Name"
-                        value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
-                        required
-                    />
-                    <input
-                        type="email"
-                        placeholder="Email address"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                    <input
-                        type="password"
-                        placeholder="Password (min 6 characters)"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                    <input
-                        type="password"
-                        placeholder="Confirm Password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        required
-                    />
+                    <input type="text" placeholder="Full Name" value={fullName} onChange={(e) => setFullName(e.target.value)} required />
+                    <input type="email" placeholder="Email address" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    <input type="password" placeholder="Password (min 6 characters)" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                    <input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
                     <button type="submit">Create Account</button>
                 </form>
-                <p>
-                    Already have an account? <a href="#" onClick={(e) => { e.preventDefault(); onSwitchToLogin(); }}>Sign In</a>
-                </p>
+                <p>Already have an account? <a href="#" onClick={(e) => { e.preventDefault(); onSwitchToLogin(); }}>Sign In</a></p>
+            </div>
+        </div>
+    );
+}
+
+function Dashboard({ user, onLogout }) {
+    return (
+        <div className="dashboard-container">
+            <div className="dashboard-header">
+                <h1>Welcome back, {user?.fullName?.split(' ')[0] || user?.name || 'User'}!</h1>
+                <button onClick={onLogout}>Logout</button>
+            </div>
+            <div className="dashboard-content">
+                <p>Your dashboard content goes here.</p>
             </div>
         </div>
     );
@@ -174,19 +143,8 @@ function App() {
         setUser(null);
     };
 
-    const handleNavigate = (page) => {
-        console.log('Navigate to:', page);
-    };
-
     if (loading) {
-        return (
-            <div className="auth-container">
-                <div className="auth-card" style={{ textAlign: 'center' }}>
-                    <h1>ProGit</h1>
-                    <p>Loading...</p>
-                </div>
-            </div>
-        );
+        return <div>Loading...</div>;
     }
 
     if (!user) {
@@ -196,7 +154,7 @@ function App() {
         return <Login onLogin={handleLogin} onSwitchToSignup={() => setShowSignup(true)} />;
     }
     
-    return <DashboardNew user={user} onLogout={handleLogout} onNavigate={handleNavigate} />;
+    return <Dashboard user={user} onLogout={handleLogout} />;
 }
 
 export default App;
