@@ -79,9 +79,9 @@ function Dashboard() {
             <a href="#" className="view-link">View →</a>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
 
-export default DashboardNew;
+export default Dashboard;
